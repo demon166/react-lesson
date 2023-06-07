@@ -1,5 +1,4 @@
 import MyButton from "./MyButton";
-import {useState} from "react";
 
 export interface IProduct {
   id: number;
