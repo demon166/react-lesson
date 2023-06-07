@@ -1,9 +1,0 @@
-.img {
-  border-radius: 10px;
-}
-
-.span::after {
-  content: " | ";
-  display: inline-block;
-  padding-inline: 20px;
-}

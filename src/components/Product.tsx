@@ -1,4 +1,5 @@
 import MyButton from "./MyButton";
+import {useState} from "react";
 
 export interface IProduct {
   id: number;
@@ -10,29 +11,53 @@ export interface IProduct {
 
 interface ProductProps {
   product: IProduct;
+  updateProduct: (product: IProduct) => void;
+  deleteProduct: (product: IProduct) => void;
 }
 
-const Product = ({ product }: ProductProps) => {
+const Product = ({ product, updateProduct, deleteProduct }: ProductProps) => {
   const { count, inCart, name, price } = product;
-  const onClickIncrement = () => {
-    alert(" + 1 ");
+  const handleIncrement = () => {
+    updateProduct({
+      ...product,
+      count: product.count + 1
+    })
   };
-  const onClickDecrement = () => {
-    alert(" - 1 ");
+  const handleDecrement = () => {
+    updateProduct({
+      ...product,
+      count: product.count - 1
+    })
   };
+  const handleDelete = () => {
+    deleteProduct(product);
+  }
+
+  const toggleCart = () => {
+    updateProduct({
+      ...product,
+      inCart: !product.inCart
+    })
+  }
+
   return (
-    <div>
-      <span>
-        <span className="span">{inCart && "✔"}</span>
-        <span className="span">{name}</span>
-        <span className="span">{count}</span>
-        <span className="span">{price}</span>
-        <span className="span">{price * count}</span>
-      </span>
-      <MyButton onClick={onClickIncrement}>+ 1</MyButton>
-      <MyButton onClick={onClickDecrement}>- 1</MyButton>
-      <MyButton>Удалить</MyButton>
-    </div>
+    <tr>
+      <td>
+        {inCart && "✔"}
+      </td>
+      <td>{name}</td>
+      <td>{count}</td>
+      <td>{price}</td>
+      <td>{price * count}</td>
+      <td><MyButton onClick={toggleCart}> В корзине </MyButton></td>
+      <td>
+        <MyButton onClick={handleIncrement}>+ 1</MyButton>
+        <MyButton onClick={handleDecrement}>- 1</MyButton>
+      </td>
+      <td>
+        <MyButton onClick={handleDelete}>Удалить</MyButton>
+      </td>
+    </tr>
   );
 };
 
