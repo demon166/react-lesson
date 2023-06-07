@@ -1,15 +1,15 @@
-import React, {useReducer, useState} from 'react';
+import React, { useReducer } from 'react';
 import {IProduct} from "../components/Product";
 import MyForm from "../components/MyForm";
 import ProductList from "../components/ProductList";
 import {productReducer} from "../store/productReducer";
+import ThemesChanger from "../components/ThemesChanger";
 
 const initialState = [
     { id: 1, count: 1, name: "Бананы", inCart: false, price: 1000 },
 ]
 
 const HomePage = () => {
-    // const [productList, setProductList] = useState<IProduct[]>(initialState);
     const [productList, dispatch] = useReducer(productReducer, initialState);
 
     const addProduct = (product: IProduct) => {
@@ -33,6 +33,11 @@ const HomePage = () => {
 
     return (
         <>
+            <div className="row">
+                <div className="col-12">
+                    <ThemesChanger />
+                </div>
+            </div>
             <div className="row">
                 <div className="col-12">
                     <MyForm addProduct={addProduct} />
