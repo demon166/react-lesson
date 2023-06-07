@@ -1,7 +1,8 @@
 import {useState} from "react";
 import MyButton from "./MyButton";
 import MyInput from "./MyInput";
-import {IProduct} from "./Product";
+import {useProductDispatch} from "../hooks/useProductDispatch";
+import {IProduct} from "../types";
 
 const initValue: IProduct = {
     id: 0,
@@ -11,13 +12,10 @@ const initValue: IProduct = {
     price: 0,
 };
 
-interface MyFormProps {
-    addProduct: (product: IProduct) => void;
-}
-
 type TStatusForm = "empty" | "typing" | "submitting" | "success" | "error";
 
-const MyForm = ({addProduct}: MyFormProps) => {
+const MyForm = () => {
+    const dispatch = useProductDispatch();
     const [status, setStatus] = useState<TStatusForm>("empty");
     const [product, setProduct] = useState<IProduct>(initValue);
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -33,7 +31,10 @@ const MyForm = ({addProduct}: MyFormProps) => {
     };
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
-        addProduct(product);
+        dispatch({
+                    type: "add",
+                    payload: product
+                })
         setProduct(initValue);
     };
     const isDisableButton = status !== 'typing';

@@ -1,42 +1,47 @@
 import MyButton from "./MyButton";
-
-export interface IProduct {
-  id: number;
-  name: string;
-  count: number;
-  price: number;
-  inCart: boolean;
-}
+import {IProduct} from "../types";
+import {useProductDispatch} from "../hooks/useProductDispatch";
 
 interface ProductProps {
   product: IProduct;
-  updateProduct: (product: IProduct) => void;
-  deleteProduct: (product: IProduct) => void;
 }
 
-const Product = ({ product, updateProduct, deleteProduct }: ProductProps) => {
+const Product = ({ product }: ProductProps) => {
   const { count, inCart, name, price } = product;
+  const dispatch = useProductDispatch();
   const handleIncrement = () => {
-    updateProduct({
-      ...product,
-      count: product.count + 1
-    })
+      dispatch({
+          type: "update",
+          payload: {
+              ...product,
+              count: product.count + 1
+          }
+      })
   };
   const handleDecrement = () => {
-    updateProduct({
-      ...product,
-      count: product.count - 1
-    })
+      dispatch({
+          type: "update",
+          payload: {
+              ...product,
+              count: product.count - 1
+          }
+      })
   };
   const handleDelete = () => {
-    deleteProduct(product);
+    dispatch({
+        type: "delete",
+        payload: product,
+    })
   }
 
   const toggleCart = () => {
-    updateProduct({
-      ...product,
-      inCart: !product.inCart
-    })
+      dispatch({
+          type: "update",
+          payload: {
+              ...product,
+              inCart: !product.inCart
+          }
+      })
   }
 
   return (

@@ -1,12 +1,8 @@
-import Product, {IProduct} from "./Product";
+import Product from "./Product";
+import {useProducts} from "../hooks/useProducts";
 
-interface ProductListProps {
-    products: IProduct[];
-    updateProduct: (product: IProduct) => void;
-    deleteProduct: (product: IProduct) => void;
-}
-
-const ProductList = ({products, updateProduct, deleteProduct}: ProductListProps) => {
+const ProductList = () => {
+    const products = useProducts();
     return (
         <table className="table table-bordered mt-3">
             {
@@ -15,8 +11,6 @@ const ProductList = ({products, updateProduct, deleteProduct}: ProductListProps)
                         <Product
                             key={product.id}
                             product={product}
-                            updateProduct={updateProduct}
-                            deleteProduct={deleteProduct}
                         />
                     ))
                     : (

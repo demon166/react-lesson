@@ -1,36 +1,11 @@
-import React, { useReducer } from 'react';
-import {IProduct} from "../components/Product";
+import React from 'react';
 import MyForm from "../components/MyForm";
 import ProductList from "../components/ProductList";
-import {productReducer} from "../store/productReducer";
 import ThemesChanger from "../components/ThemesChanger";
-
-const initialState = [
-    { id: 1, count: 1, name: "Бананы", inCart: false, price: 1000 },
-]
+import ProductsProvider from "../context/Products/ProductsProvider";
+import TotalCart from "../components/TotalCart";
 
 const HomePage = () => {
-    const [productList, dispatch] = useReducer(productReducer, initialState);
-
-    const addProduct = (product: IProduct) => {
-        dispatch({
-            type: "add",
-            payload: product
-        })
-    };
-    const updateProduct = (product: IProduct) => {
-        dispatch({
-            type: "update",
-            payload: product,
-        })
-    }
-    const deleteProduct = (product: IProduct) => {
-        dispatch({
-            type: "delete",
-            payload: product,
-        })
-    }
-
     return (
         <>
             <div className="row">
@@ -38,22 +13,24 @@ const HomePage = () => {
                     <ThemesChanger />
                 </div>
             </div>
-            <div className="row">
-                <div className="col-12">
-                    <MyForm addProduct={addProduct} />
+            <ProductsProvider>
+                <div className="row">
+                    <div className="col-12">
+                        <MyForm />
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col-12">
-                    <ProductList
-                        products={productList}
-                        updateProduct={updateProduct}
-                        deleteProduct={deleteProduct}
-                    />
+                <div className="row">
+                    <div className="col-12">
+                        <ProductList />
+                    </div>
                 </div>
-            </div>
+                <div className="row">
+                    <div className="col-12">
+                        <TotalCart />
+                    </div>
+                </div>
+            </ProductsProvider>
         </>
-
     );
 };
 

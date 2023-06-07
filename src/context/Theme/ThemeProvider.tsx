@@ -1,6 +1,6 @@
 import React, {ReactElement, useState} from 'react';
 import {ThemeContext, ThemeDispatchContext} from './themeContext';
-import {TTheme} from "../types";
+import {TTheme} from "../../types";
 
 interface ThemeProviderProps {
     children: ReactElement;
