@@ -9,7 +9,7 @@ const initValue: IProduct = {
     count: 1,
     inCart: false,
     name: "",
-    price: 0,
+    price: 10,
 };
 
 type TStatusForm = "empty" | "typing" | "submitting" | "success" | "error";

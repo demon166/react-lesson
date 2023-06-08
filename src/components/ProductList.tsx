@@ -4,7 +4,18 @@ import {useProducts} from "../hooks/useProducts";
 const ProductList = () => {
     const products = useProducts();
     return (
-        <table className="table table-bordered mt-3">
+        <table className="table table-bordered table-striped mt-3">
+            <thead>
+            <tr>
+                <th>В корзине</th>
+                <th>Наименование</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Сумма</th>
+                <th colSpan={4}></th>
+            </tr>
+            </thead>
+            <tbody>
             {
                 products.length > 0
                     ? products.map((product) => (
@@ -23,6 +34,7 @@ const ProductList = () => {
                     )
 
             }
+            </tbody>
         </table>
     );
 };

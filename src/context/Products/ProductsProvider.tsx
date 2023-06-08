@@ -15,7 +15,7 @@ const ProductsProvider = ({children}: ProductsProviderProps) => {
     return (
         <ProductsContext.Provider value={productList}>
             <ProductsDispatchContext.Provider value={dispatch}>
-                {children}
+                { children }
             </ProductsDispatchContext.Provider>
         </ProductsContext.Provider>
     );
