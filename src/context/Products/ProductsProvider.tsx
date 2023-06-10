@@ -1,5 +1,5 @@
-import React, { ReactElement, useReducer} from 'react';
-import {ProductsContext, ProductsDispatchContext} from "./productsContext";
+import React, {ReactElement, useReducer, useRef} from 'react';
+import {ListProductContext, ProductsContext, ProductsDispatchContext} from "./productsContext";
 import {productReducer} from "../../store/productReducer";
 
 interface ProductsProviderProps {
@@ -27,14 +27,17 @@ const initialState = [
     { id: 18, count: 1, name: "Личи", inCart: false, price: 1000 },
     { id: 19, count: 1, name: "Бананы", inCart: false, price: 1000 },
     { id: 20, count: 1, name: "Киви", inCart: false, price: 1000 },
-]
+];
 
 const ProductsProvider = ({children}: ProductsProviderProps) => {
     const [productList, dispatch] = useReducer(productReducer, initialState);
+    const listRef = useRef(null);
     return (
         <ProductsContext.Provider value={productList}>
             <ProductsDispatchContext.Provider value={dispatch}>
-                { children }
+                <ListProductContext.Provider value={listRef} >
+                    { children }
+                </ListProductContext.Provider>
             </ProductsDispatchContext.Provider>
         </ProductsContext.Provider>
     );

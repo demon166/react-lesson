@@ -3,6 +3,8 @@ import MyButton from "./MyButton";
 import MyInput from "./MyInput";
 import {useProductDispatch} from "../hooks/useProductDispatch";
 import {IProduct} from "../types";
+import {useListProduct} from "../hooks/useListProduct";
+import {flushSync} from "react-dom";
 
 const initValue: IProduct = {
     id: 0,
@@ -18,6 +20,7 @@ const MyForm = () => {
     const dispatch = useProductDispatch();
     const [status, setStatus] = useState<TStatusForm>("empty");
     const [product, setProduct] = useState<IProduct>(initValue);
+    const listRef = useListProduct();
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         if (e.target.value.length !== 0) {
             setStatus("typing");
@@ -31,11 +34,17 @@ const MyForm = () => {
     };
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
-        dispatch({
-                    type: "add",
-                    payload: product
-                })
+        flushSync(() => {
+            dispatch({
+                type: "add",
+                payload: product
+            });
+        });
         setProduct(initValue);
+        listRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+        })
     };
     const isDisableButton = status !== 'typing';
     return (
