@@ -1,3 +1,5 @@
+import {forwardRef} from "react";
+
 interface MyInputProps {
     value: string | number;
     name: string;
@@ -6,16 +8,17 @@ interface MyInputProps {
     handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const MyInput = ({
+const MyInput = forwardRef<HTMLInputElement, MyInputProps>(({
                      value,
                      name,
                      placeholder = "",
                      type = "text",
                      handleChange,
-                 }: MyInputProps) => {
+                 }, ref) => {
     return (
         <div className="mb-3">
             <input
+                ref={ref}
                 className="form-control"
                 type={type}
                 name={name}
@@ -25,6 +28,6 @@ const MyInput = ({
             />
         </div>
     );
-};
+});
 
 export default MyInput;

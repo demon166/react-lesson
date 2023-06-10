@@ -5,6 +5,7 @@ export const productReducer = (products: IProduct[], { type, payload: product }:
         case "add": {
             return [...products, {
                 ...product,
+                id: Date.now(),
                 count: +product.count,
                 price: +product.price,
             }]
