@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import { PublicLayout } from "components";
 import { AboutPage, ContactPage, ErrorPage, HomePage, ProductsPage } from "pages";
+import TestPage from "pages/TestPage";
 
 const publicRoutes: RouteObject[] = [
     {
@@ -9,7 +10,7 @@ const publicRoutes: RouteObject[] = [
         errorElement: <ErrorPage/>,
         children: [
             {
-                path: "/",
+                index: true,
                 element: <HomePage/>
             },
             {
@@ -22,8 +23,22 @@ const publicRoutes: RouteObject[] = [
             },
             {
                 path: "/contact",
-                element: <ContactPage/>
+                element: <ContactPage/>,
+                children: [
+                    {
+                        path: "random",
+                        element: <AboutPage/>,
+                        children: [
+                            {
+                                path: "name",
+                                element: <TestPage/>
+                            },
+                        ]
+                    },
+                ]
             },
+
+
         ]
     },
 

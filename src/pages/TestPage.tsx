@@ -1,10 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
-import MyVideoPlayer from "../components/VideoPlayer/MyVideoPlayer";
-import MyInput from "../components/MyInput";
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from "react-router-dom";
 
 const TestPage = () => {
-    const [value, setValue] = useState("");
-    const [posts, setPosts] = useState();
+    const [ value, setValue ] = useState("");
+    const [ posts, setPosts ] = useState();
     const buttonRef = useRef<HTMLButtonElement>(null);
 
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -17,7 +16,9 @@ const TestPage = () => {
 
     useEffect(() => {
         getPosts();
-        const handleClick = () => { alert('Нажата кнопка'); };
+        const handleClick = () => {
+            alert('Нажата кнопка');
+        };
         buttonRef.current?.addEventListener("click", handleClick)
         return () => {
             buttonRef.current?.removeEventListener("click", handleClick);
@@ -26,9 +27,8 @@ const TestPage = () => {
 
     return (
         <div className="row">
-            <div className="col-8">
-                <button ref={buttonRef}>Кнопка</button>
-                <MyInput value={value} name="asd" handleChange={handleChange} />
+            <div className="col-8 pt-3">
+                <Link to="..">Ссылка</Link>
             </div>
         </div>
     );
