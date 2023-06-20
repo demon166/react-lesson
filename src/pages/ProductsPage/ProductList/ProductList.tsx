@@ -3,12 +3,12 @@ import { IProduct } from "types";
 import ProductListItem from "./ProductListItem/ProductListItem";
 
 const ProductList = () => {
-    const products = useLoaderData() as IProduct[];
+    const { data } = useLoaderData() as { data: IProduct[] };
 
     return (
         <ul className="list-group">
             {
-                products.map(p => (
+                data.map(p => (
                     <ProductListItem p={p} key={p.id}/>
                 ))
             }

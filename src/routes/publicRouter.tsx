@@ -16,6 +16,8 @@ import {
 import TestPage from "pages/TestPage";
 import ProductCreatePage from "pages/ProductsPage/ProductCreatePage/ProductCreatePage";
 import ProductEditPage from "pages/ProductsPage/ProductEditPage/ProductEditPage";
+import ProductErrorPage from "pages/ProductsPage/ProductErrorPage/ProductErrorPage";
+import ProductIndexPage from "pages/ProductsPage/ProductIndexPage/ProductIndexPage";
 
 const publicRoutes: RouteObject[] = [
     {
@@ -33,24 +35,33 @@ const publicRoutes: RouteObject[] = [
                 loader: getProducts,
                 children: [
                     {
-                        path: "create",
-                        element: <ProductCreatePage/>,
-                        action: createProduct,
-                    },
-                    {
-                        path: ":productId",
-                        element: <ProductItemPage/>,
-                        loader: getProductItem
-                    },
-                    {
-                        path: ":productId/edit",
-                        element: <ProductEditPage/>,
-                        loader: getProductItem,
-                        action: updateProduct
-                    },
-                    {
-                        path: ":productId/delete",
-                        action: deleteProduct
+                        errorElement: <ProductErrorPage/>,
+                        children: [
+                            {
+                                index: true,
+                                element: <ProductIndexPage/>,
+                            },
+                            {
+                                path: "create",
+                                element: <ProductCreatePage/>,
+                                action: createProduct,
+                            },
+                            {
+                                path: ":productId",
+                                element: <ProductItemPage/>,
+                                loader: getProductItem
+                            },
+                            {
+                                path: ":productId/edit",
+                                element: <ProductEditPage/>,
+                                loader: getProductItem,
+                                action: updateProduct
+                            },
+                            {
+                                path: ":productId/delete",
+                                action: deleteProduct,
+                            }
+                        ]
                     }
                 ]
             },

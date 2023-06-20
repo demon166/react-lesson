@@ -1,5 +1,6 @@
 import ProductList from "./ProductList/ProductList";
 import { Link, Outlet } from "react-router-dom";
+import SearchProduct from "pages/ProductsPage/SearchProduct/SearchProduct";
 
 const ProductsPage = () => {
     return (
@@ -7,7 +8,8 @@ const ProductsPage = () => {
             <h1>Страница всех продуктов</h1>
             <div className="row">
                 <div className="col-3">
-                    <div className="mb-2">
+                    <div className="d-flex mb-2">
+                        <SearchProduct/>
                         <Link to="/products/create" className="btn btn-dark">Добавить</Link>
                     </div>
                     <ProductList/>

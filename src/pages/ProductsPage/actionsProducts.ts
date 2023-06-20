@@ -22,6 +22,7 @@ export const createProduct: ActionFunction = async ({ request }) => {
 
 export const deleteProduct: ActionFunction = async ({ params }) => {
     const { productId } = params;
+    throw new Error("Произошла ошибка во время удаления продукта!");
     try {
         await fetch(`http://localhost:3001/products/${productId}`, {
             method: "delete",
