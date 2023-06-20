@@ -1,10 +1,10 @@
-import ErrorPage from "pages/ErrorPage";
-import HomePage from "pages/HomePage";
-import ProductsPage from "pages/ProductsPage";
-import ProductItemPage from "pages/ProductItemPage";
-import ProductEditPage from "pages/ProductEditPage";
-import AboutPage from "pages/AboutPage";
-import ContactPage from "pages/ContactPage";
+import ErrorPage from "./ErrorPage";
+import HomePage from "./HomePage";
+import { createProduct, getProductItem, getProducts, ProductsPage } from "./ProductsPage";
+import ProductItemPage from "./ProductItemPage";
+import ProductEditPage from "./ProductEditPage";
+import AboutPage from "./AboutPage";
+import ContactPage from "./ContactPage";
 
 export {
     ErrorPage,
@@ -13,5 +13,9 @@ export {
     ProductItemPage,
     ProductsPage,
     AboutPage,
-    ContactPage
+    ContactPage,
+
+    getProducts,
+    getProductItem,
+    createProduct
 }

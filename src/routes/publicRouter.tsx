@@ -1,6 +1,16 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import { PublicLayout } from "components";
-import { AboutPage, ContactPage, ErrorPage, HomePage, ProductsPage } from "pages";
+import {
+    AboutPage,
+    ContactPage,
+    createProduct,
+    ErrorPage,
+    getProductItem,
+    getProducts,
+    HomePage,
+    ProductItemPage,
+    ProductsPage
+} from "pages";
 import TestPage from "pages/TestPage";
 
 const publicRoutes: RouteObject[] = [
@@ -14,15 +24,22 @@ const publicRoutes: RouteObject[] = [
                 element: <HomePage/>
             },
             {
-                path: "/products",
-                element: <ProductsPage/>
+                path: "products",
+                element: <ProductsPage/>,
+                loader: getProducts,
+                action: createProduct,
             },
             {
-                path: "/about",
+                path: "products/:productId",
+                element: <ProductItemPage/>,
+                loader: getProductItem
+            },
+            {
+                path: "about",
                 element: <AboutPage/>
             },
             {
-                path: "/contact",
+                path: "contact",
                 element: <ContactPage/>,
                 children: [
                     {
