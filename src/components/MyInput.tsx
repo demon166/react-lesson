@@ -1,20 +1,22 @@
-import {forwardRef} from "react";
+import { forwardRef } from "react";
 
 interface MyInputProps {
-    value: string | number;
+    value?: string | number;
     name: string;
     type?: "text" | "number";
     placeholder?: string;
-    handleChange: React.ChangeEventHandler<HTMLInputElement>;
+    handleChange?: React.ChangeEventHandler<HTMLInputElement>;
+    defaultValue?: string | number;
 }
 
 const MyInput = forwardRef<HTMLInputElement, MyInputProps>(({
-                     value,
-                     name,
-                     placeholder = "",
-                     type = "text",
-                     handleChange,
-                 }, ref) => {
+                                                                value,
+                                                                name,
+                                                                placeholder = "",
+                                                                type = "text",
+                                                                handleChange,
+                                                                defaultValue,
+                                                            }, ref) => {
     return (
         <div className="mb-3">
             <input
@@ -25,6 +27,7 @@ const MyInput = forwardRef<HTMLInputElement, MyInputProps>(({
                 onChange={handleChange}
                 value={value}
                 placeholder={placeholder}
+                defaultValue={defaultValue}
             />
         </div>
     );

@@ -4,14 +4,18 @@ import {
     AboutPage,
     ContactPage,
     createProduct,
+    deleteProduct,
     ErrorPage,
     getProductItem,
     getProducts,
     HomePage,
     ProductItemPage,
-    ProductsPage
+    ProductsPage,
+    updateProduct
 } from "pages";
 import TestPage from "pages/TestPage";
+import ProductCreatePage from "pages/ProductsPage/ProductCreatePage/ProductCreatePage";
+import ProductEditPage from "pages/ProductsPage/ProductEditPage/ProductEditPage";
 
 const publicRoutes: RouteObject[] = [
     {
@@ -27,12 +31,28 @@ const publicRoutes: RouteObject[] = [
                 path: "products",
                 element: <ProductsPage/>,
                 loader: getProducts,
-                action: createProduct,
-            },
-            {
-                path: "products/:productId",
-                element: <ProductItemPage/>,
-                loader: getProductItem
+                children: [
+                    {
+                        path: "create",
+                        element: <ProductCreatePage/>,
+                        action: createProduct,
+                    },
+                    {
+                        path: ":productId",
+                        element: <ProductItemPage/>,
+                        loader: getProductItem
+                    },
+                    {
+                        path: ":productId/edit",
+                        element: <ProductEditPage/>,
+                        loader: getProductItem,
+                        action: updateProduct
+                    },
+                    {
+                        path: ":productId/delete",
+                        action: deleteProduct
+                    }
+                ]
             },
             {
                 path: "about",

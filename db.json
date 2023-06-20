@@ -1,28 +1,11 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Киви",
-      "count": 1,
-      "inCart": false,
-      "price": 100
-    },
-    {
       "id": 2,
       "name": "Яблоки",
       "count": 1,
-      "inCart": false,
+      "inCart": true,
       "price": 70
-    },
-    {
-      "id": 3,
-      "name": "Груши",
-      "count": 1,
-      "inCart": false,
-      "price": 120
-    },
-    {
-      "id": 4
     },
     {
       "name": "Бананы",
@@ -32,18 +15,25 @@
       "id": 5
     },
     {
-      "name": "Мандарины",
-      "count": "1",
-      "price": "50",
-      "inCart": false,
-      "id": 6
-    },
-    {
       "name": "Молоко",
       "count": "1",
       "price": "50",
       "inCart": false,
       "id": 7
+    },
+    {
+      "name": "Груши",
+      "count": 1,
+      "price": 20,
+      "inCart": false,
+      "id": 8
+    },
+    {
+      "name": "Лимоны",
+      "count": 2,
+      "price": 50,
+      "inCart": "false",
+      "id": 9
     }
   ]
 }

@@ -1,6 +1,6 @@
 import ErrorPage from "./ErrorPage";
 import HomePage from "./HomePage";
-import { createProduct, getProductItem, getProducts, ProductsPage } from "./ProductsPage";
+import { createProduct, deleteProduct, getProductItem, getProducts, ProductsPage, updateProduct } from "./ProductsPage";
 import ProductItemPage from "./ProductItemPage";
 import ProductEditPage from "./ProductEditPage";
 import AboutPage from "./AboutPage";
@@ -17,5 +17,7 @@ export {
 
     getProducts,
     getProductItem,
-    createProduct
+    createProduct,
+    deleteProduct,
+    updateProduct,
 }
