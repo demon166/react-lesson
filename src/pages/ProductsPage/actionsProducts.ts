@@ -43,7 +43,7 @@ export const updateProduct: ActionFunction = async ({ params, request }) => {
             ...updateData,
             count: +updateData.count,
             price: +updateData.price,
-            inCart: updateData.inCart,
+            inCart: updateData.inCart === 'true',
         }),
         headers: {
             "Content-type": "application/json"

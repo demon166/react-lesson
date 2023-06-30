@@ -1,0 +1,12 @@
+.search{
+    display: flex;
+    align-items: center;
+    margin-right: .5rem;
+    position: relative;
+}
+
+.spinner{
+    position: absolute;
+    right: 10px;
+
+}

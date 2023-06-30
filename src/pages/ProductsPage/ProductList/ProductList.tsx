@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import {Link, useLoaderData} from "react-router-dom";
 import { IProduct } from "types";
 import ProductListItem from "./ProductListItem/ProductListItem";
 
@@ -12,6 +12,7 @@ const ProductList = () => {
                     <ProductListItem p={p} key={p.id}/>
                 ))
             }
+            <Link to="/products/20">Фейк</Link>
         </ul>
     );
 };

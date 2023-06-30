@@ -1,24 +1,21 @@
 {
   "products": [
     {
-      "id": 2,
-      "name": "Яблоки",
-      "count": 1,
-      "inCart": true,
-      "price": 70
+      "inCart": "false",
+      "id": 2
     },
     {
       "name": "Бананы",
-      "count": "1",
-      "price": "100",
+      "count": 1,
+      "price": 100,
       "inCart": false,
       "id": 5
     },
     {
       "name": "Молоко",
-      "count": "1",
-      "price": "50",
-      "inCart": false,
+      "count": 1,
+      "price": 50,
+      "inCart": true,
       "id": 7
     },
     {

@@ -30,6 +30,7 @@ const publicRoutes: RouteObject[] = [
                 element: <HomePage/>
             },
             {
+
                 path: "products",
                 element: <ProductsPage/>,
                 loader: getProducts,
